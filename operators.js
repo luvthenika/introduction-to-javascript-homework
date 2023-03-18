@@ -77,16 +77,16 @@ console.log(`This triangle is ${a*a + b*b === c*c ? '' : 'not '}pythagorean`);
 //problem 6
 let date=new Date()
 let hours=date.getHours()
-if(hours>=23 && hours<=5 ){
+if(hours>23 && hours<=5 ){
     console.log('Good night')
 }
-else if (hours >=5 && hours<= 11 ){
+else if (hours >5 && hours<= 11 ){
     console.log('Good morning')
 }
 else if (hours >11 && hours<= 17 ){
     console.log('Good afternoon')
 }
-if(hours>= 17 && hours <= 23 ){
+if(hours> 17 && hours <= 23 ){
     console.log('Good night')
 }
 
