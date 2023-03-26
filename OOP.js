@@ -1,4 +1,4 @@
-//problem 1
+//problem 1 undone
 class Circle {
     constructor(x,y,r){
     this.x = x
@@ -29,38 +29,91 @@ function propsCount(currentObject){
    console.log(propertyCount)
 }
 
-//problem 3
-class Person{
-    constructor(name,surname){
-        this.name =  name
-        this.surname = surname
+//problem 3 
+class Person {
+    constructor(name, surname) {
+      this.name = name;
+      this.surname = surname;
     }
-    showFullName(){
-        console.log(this.name,this.surname)
+  
+    showFullName() {
+      console.log(`${this.name} ${this.surname}`);
     }
-}
-class Student extends Person{
-    constructor(age,middleName){
-        this.age = age
-        this.middleName = middleName
+  }
+  
+  class Student extends Person {
+    constructor(name, surname, middleName,course) {
+      super(name, surname)
+      this.middleName = middleName
+      this.course = course
     }
-    showInfo(){
-        console.log(`Student:${this.name,this.surname,this.middleName} Age:${this.age}`)
+  
+    showFullName() {
+      super.showFullName();
+      console.log(`Student: ${this.name} ${this.surname} ${this.middleName}`)
     }
-}
-let student = new Person('nika','chudyk')
-student.showFullName()
+    showCourse(course){
+        console.log(`Course: ${this.course} `)
 
-//problem 
+    }
+  }
+  
+  let student = new Student("Nika", "Chudyk", "Ben")
+  student.showFullName()
+  student.showCourse(4)
+
+//problem 4 undone
+let black = 'black'
 class Highlighter{
     constructor(shade,percentage){
         this.shade = shade
         this.percentage = percentage
     }
-    outputText(string){
-        console.log("%c" + string, `color: ${this.shade}`);
+    outputText(string) {
+  //console.log("%c" + string, `color: ${this.shade}`);
+  for (let i = 0; i < string.length; i++) {
+    if (this.percentage >= string.length * 0.5) {
+      console.log("%c" + string[i], `color: ${this.shade}`);
+      this.percentage -= 0.5;
+    } else {
+      console.log("%c" + string[i], `color: black`);
     }
+  }
+}
 
 }
-let pinkHighlighter = new Highlighter('pink','46%')
-pinkHighlighter.outputText('Nika is cool')
+let pinkHighlighter = new Highlighter('pink','3')
+pinkHighlighter.outputText('Nika')
+
+
+//problem 5 undone
+class Worker{ 
+    #experienceRatio = 1.2
+    constructor(fullName,dayRate,workingDays){
+        this.fullName = fullName
+        this.dayRate = dayRate
+        this.workingDays = workingDays
+    
+    }
+    showSalary(){
+        console.log(`${this.dayRate * this.workingDays}`)
+    }
+    get experienceRatio(){
+        return this.experience
+    }
+    set experienceRatio(value){
+        value = this.#experienceRatio
+        return value
+    }
+    increasedSalary(){
+        console.log(this.#experienceRatio * this.dayRate * this.workingDays)
+    }
+}
+let developer = new Worker('ben',1000,20)
+developer.showSalary()
+developer.increasedSalary()
+
+
+
+
+
