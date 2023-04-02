@@ -74,7 +74,7 @@ submitBtn.addEventListener('click', function() {
   console.log(formData);
 });
 
-
+// problem 5
 const circles = document.querySelectorAll('.circle')
 let animations = Array.from(circles).map(circle => circle.getAttribute('data-anim'))
 console.log(animations)
