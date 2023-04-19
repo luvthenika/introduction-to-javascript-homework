@@ -54,6 +54,31 @@ console.log(mul(true, false, "str", 1, 3, 46))
 const multiply = (...nums) => nums.reduce((product, num) => { if (typeof (num) === "number") { product *= num } return product })
 console.log(multiply(true, false, "str", 1, 3, 46))
 
+
+
+// problem 4 bind method is udes to borrow obejcts' methods adn set them to another object without copying that method. it is called borrowing
+let server = {
+    data: 0,
+};
+ let client = {
+    server: server,
+    result: "",
+    calc: function (data) {
+       this.server.data = data;
+       this.server.convertToString(this.notification());
+    },
+    notification: function () {
+       return (function (callback) {
+          this.result = callback();
+       }).bind(this);
+    }
+ };
+ client.calc(123);
+ server.displayData()
+ console.log(client.result); // "123"
+ console.log(typeof client.result); // "string"
+
+
 //problem 6
 var arr = [];
 
@@ -65,3 +90,22 @@ for (let i = 0; i <= 2; i++) {
 console.log(arr.length) 
 console.log(arr)
 
+//const timer = (str)=> function(str){for (let smallstr of str){setInterval((smallstr)=>console.log(smallstr)),1000}}
+/*function timer(bigstring){
+    for(let letter of bigstring){
+        setInterval(()=>{
+            console.log(letter)
+        },4000)
+        console.log(letter)
+    }
+
+}
+timer("nk") */
+
+const cinema = {
+    moviename : "cinderella",
+    show : function(){
+        console.log(this.moviename)
+    }
+}
+cinema.show()
